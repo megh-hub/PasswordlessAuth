@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <style>
+        body,
+        html {
+            background-image: url("../static/img/trybg.jpeg");
+            background-size: 100%;
+            background-repeat: no-repeat;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        .login {
+            position: fixed;
+            left: 25%;
+            padding-left: 50px;
+            padding-right: 50px;
+            padding-bottom: 50px;
+            background-color: white;
+            opacity: 80%;
+            width: 50%;
+            border-radius: 10px;
+            margin-top: 100px;
+        }
+
+        button {
+            background-color: rgb(116, 116, 116);
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            color: aliceblue;
+        }
+
+        button:hover {
+            background-color: rgb(65, 65, 65);
+            transition: 0.3s;
+        }
+
+        a {
+            text-decoration: none;
+            color: aliceblue;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input {
+            font-family: 'Times New Roman', Times, serif;
+            padding: 10px;
+            border-radius: 5px;
+            border: 0.5px solid black;
+        }
+
+        h1 {
+            opacity: 90%;
+        }
+    </style>
+    <div class="login">
+        <h1 class="invite">Login</h1>
+        <form action="#" method="POST">
+            <input type="email" id="email" name="email" placeholder="Email ID" required />
+            <button type="submit">Login!</button>
+        </form>
+    </div>
+</body>
+
+</html>
