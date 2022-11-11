@@ -59,10 +59,10 @@
     <div class="homeContent">
         <h1 class="title">Passwordless Authentication with Blockchain</h1>
         New users, head to the registration page!
-        <button><a href="register.html">Register</a></button>
+        <button><a href="{{ url_for('register') }}">Register</a></button>
         <br><br>
         Old users, head to the login page!
-        <button><a href="login.html">Login</a></button>
+        <button><a href={{ url_for('login') }}>Login</a></button>
     </div>
 </body>
 

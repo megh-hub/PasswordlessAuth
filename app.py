@@ -25,20 +25,22 @@ from flask import Flask, request, jsonify
 from firebase_admin import credentials, firestore, initialize_app
 
 # import google.cloud
+
 # from google.cloud import firestore
 # ---------------------integrating firebase in our flask app---------------------
-cred=credentials.Certificate('niscoinblock-firebase-adminsdk-yg3l1-6265245b34.json')
+cred=credentials.Certificate('blockchain-nis-firebase-adminsdk-kg1u8-26cecdacc3.json')
 default_app = initialize_app(cred)
 db = firestore.client()
 # ----------------------------the core flask app with all redirections--------------------
-app = Flask(__name__)
+app = Flask(__name__,template_folder='templates')
 print("here")
 
 @app.route("/")
 def home():
     return render_template("index.html")
+    print("Megha");
 mail = Mail(app)
-app.config["MAIL_SERVER"] = 'smtp.gmail.com'
+app.config["MAIL_SERVER"] = 'smtp..com'
 app.config["MAIL_PORT"] = 465
 app.config["MAIL_USERNAME"] = 'webi.fi.tech@gmail.com'
 app.config['MAIL_PASSWORD'] = 'webtech123'
@@ -47,7 +49,7 @@ app.config['MAIL_USE_SSL'] = True
 mail = Mail(app)
 otp = random.randint(1000, 9999)
 email = 'useremail@gmail.com'
-gen_privateKey ="MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQC4lyUMAk234khudJVLKneRc/4knOCjQNagKb760BE54zmPAC6gjwZaO7PRWTPiSsfiOvFhGczod3bN47rJAHPGTgldIxxxarISf2JKE5sp8vwH9BRgplp25DcpPBTN9ZHx6bR4+ctN93aNdqjjXs15VJs0D+8rFmwr6OKD4Mms+7mQlDATXwh2HuVfbXCCAstUAapcxW01uxlc2IDeoXqWlHE1yCYZDkzHh7BJi/Yt52Tsm40MQmIY2IPGhryoje7Y48GRWu06dzX3/brl/xFqnLVSx/OM/Ts/n8VlnGtJlIyvhcs6Tq7AA/RQRac9t5mn8+ztYNZzpd0SfukuMRtbAgMBAAECggEBAI2QdPwJxDrTEsOLK3fzALIPaAgCPBFXx4IbofjOm3duuRTfieLe7XtEMDrMk4rn2PW6SKY0WD6sZ/Osw/IlI6Ug8fN42vZsYlbnVKUE9kmsrPcYjIw26Egn69n21unBfIUvu5XP1MhdkZEaQJnneeOkLEc4NS8xShI+z4FeYq0DLxEpkZzs+B7d0R6qRcuq1XkiI96iDbapnMXd/pFrYxSojBJxrY2LaBcOImKPqDmb0vqh6f30pSMuvfyR+S1ignpih3qwwxYxNdPGoMZJCW/d8i5+xd0x6P7DgRN0hAsQsW1a1Np5e4aAegIBMpxxvnGqHTHDoxiQAICcQkWbXRECgYEA39k7ThNEMnQH60+9g5jo5IIdF2BO3P48aghpV2ES8k+YxlQDEMkPd/jWQgCUaQ6s5znRO443wLn5dEpcSt6l38PLX/ONAzDMNC0f/s/4ORQH04F8uWuGYoNe0s1qyshWH0vSQpr9uHk9HsuLW9t+ajwMn21dvBlKDJe2o7/cC+kCgYEA0xpqegLCuD47q3j56kMk+Ap3pXySspVesOGAp924eqhCS0yKC6d8NR3K6n6ZtMsQjx2UT0hQHorFpgojyJlXprQhxOgCUP27jODaIs4qLKUVmkIJacuHguSFCYUpbyl5u4Ref4OFEU/4ZTyhIT9pxucQglhGMGGGSwjAkMNjlqMCgYEA2L9dP1JEfJ4BdQY3OQ98opaiWJo2gqHiGcGfTq5+TAZqpc9/UGd/BOn7fNlW2wsMvLAtOv+QWJs7QjEmgJBqCOtrJ7OKXQaJFBSFoJP7hDkzAsek312QOB+AV5nzx/qH+bHPHBM7jb5HQmRQwlccZv1SM6UQWCwcmWjlvlTuWtECgYAvMVmaWyGixK7cP5hHKamLFfP3d+jnqYLYsiDr5iJGsXTYlozJ3DBlQ3rIf3LnOvpBtFAihTz8BvP2kY+8WaOBrgVamq9h4cda0C2T2FkPT/yLVrX6A7kQpvuizDUeF7ySEh56DTHjU+ho4Wv4HdAM2j0Tlp5iVHsMLTG3aybJVwKBgHyLIrvIqFmkAyrjOTQVfRgdnck8UE8hT0wY3K2A1bXFtgfmKp4vMsT7/KHNZZOCgN95BF1xs2VrSVAa9TBJzv3viqqTjUJwiKa9zNgjr166b8QkFZI0urDHn19owMiJ3fR1qyazESHGZSEv7VYNX/yiJL+PmO57GRlC2buAgeAb"
+gen_privateKey ="MIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDE0LyKHArPLrWC\nfcUa7TMl7ZYQB51EYAdrdAMQO3PTGFTmlHW0hMj8hH0vmOHyZEnvuR5gpGIqiAsI\n4nZkCscVeA3RVRtgXlefSy44XIPtecSuaIKkdbJlSg8LcuXX/dZq/WLQ+JIn2MZP\nborAUpgbjN32+CA57tOMTViCvwTENqWoyxprjPV/8EajWt/UjGH/ecIGI+uAZBrO\nFOOHY6aF18fpJivH0H40QZhN8zfu7/55LUuKiiV9LsKHUBrvrkZHgh/Yb0CjunDG\ndR2wnkSylXUFxk+K1v7iwHbiEWtFPy2VfuYrbIzZdS1S1Jd1lGm8nKOHqLotorY5\nLUGLU23XAgMBAAECggEACzHS7N7IH/KzMPdAZStavmyIyDlL+7NOmLu3ijkneblS\nPZnyJqYVhy9uA21kZKoe/ntUEVZ9nZexW6cDPuYnXr7pDPVp942bhEb9cQfqGnF+\nUMFHCl2wxkwea530bthUVYTmFabIgWsLaeyKsy0U08mrvRFt8ShMG23cJqEA1Lws\nDEKmok09/6/wbS1DB/y4AaER3m2+HnMT0az8DPisB2sRzsHJqlVzdzCcvBtRnd4t\n1VW3v+a6OLnnC9lNyMMndPw1kaqQRsUsf1JuV3afUkVgwLzLgOINy/vBXtfLFoOa\ncV64npIQ2Cg6nTkmmRUsyLti6mgEqnC4OWnhE5GuYQKBgQDyd5YRsQrglJ8qr0kl\nUalAFi/DcA1AX/ynSnyF3Spa3UkUPRDiHTZx545lNTGvCTBVW0TCflgIkn82T3Qv\nnubXsGDOyqaYAaNqMQqZzDvE3xxHu9pCaHejAGUsFvgawM+eT+FSAKHlubgUG4RS\ncXoJFaUqcWykQEQgDVCbUG2mJwKBgQDPzN6rla7/c5LYzbNyCpWqsHdU/eg0wybm\nijOXeFDONGWv3HVnmcSp457yCMvyWPpC8BwPJs8kk8eTsrIe9IGNBulI9WrxeaHH\nKXZ85PuAJ2SMt5UXY5lX2kicaFrb1tJuxGzjcdLpRCeVmjkANbmw/HqlE4+XHtXU\nolfdmP/40QKBgGvXrqKtyPW8hNK6ZeE4YfwEIjhd9Tblun05zwrHJNiHRcK/qmu3\nrIibAiWXtEJy5tGAJ6QOB9/AMN6aFkY7+daDN3uifNhtGh7YMyvWv9q/lVd+gQQ6\nbMPOIDGtAar8iRuT0dbkOx3vLaWb243DtRCnVO/8xOKFRweuhGSgMDTPAoGAE+fm\nNL2kA+iIWqhp1jTZXX6GD+g6xEMliNQYWRw3cWlnjE8sF/6M7lFVuo3JK7AGWT8z\nEOiA01ostiNaGMkHWAEfe9O2qOcj7jY0mYY96WrcoPY9G/54hAfvCLyeZ4zOn7nF\nTIxszdeviw85AqIi5adqAEI9cRaNGU9r51huvOECgYEAjSP6wzKZZdoeddBE4T5F\n8HLyqEymn7KwVEulMyikER3g49McwvG8rYYo0pTsXwYWozw3Al0G/gfDoiso8ToE\nOhHYqltFzoQ5T9wxZE8VHmm16//+1atBh0yw/5JLGxwjk5gisNQAQyn9k2S3/vlI\nufmWbdqpNVAPSkgTW0ltOyg"
 # ----------------------------------------------- REGISTER METHOD-----------------------------------
 @app.route("/register", methods=["POST", "GET"])
 def register():
